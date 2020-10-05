@@ -2,7 +2,7 @@
 This is a webpack configuration record how to construct a react project and not use cra.  
 This may help you to inspect details of knowledge
 
- <img src="./docs/img/tgs010-1.jpg" width = "100%" alt="title" align=center />
+ <img src="./docs/img/tgs010-1.png" alt="title" align=center />
 
 # How to use
 ```bash
