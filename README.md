@@ -22,7 +22,7 @@ Webpack 4.41
 # Thanks
 
 
-# ChangeLog
+# ChangeLog/Tags
 ## 0.1.0
 - :pushpin: init support 
 - :bookmark: accelerate pack
