@@ -18,7 +18,7 @@ const webpack = require('webpack');
 const argv = require('yargs-parser')(process.argv.slice(2));
 const pro = argv.mode === 'production';
 
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HappyPack = require('happypack');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -33,7 +33,7 @@ module.exports = {
   },
   output: {
     path: path.resolve('dist'),
-    filename:  '[name].[chunkhash].js',
+    filename: '[name].[hash].js',
     publicPath: '/',
   },
   module: {
@@ -48,26 +48,39 @@ module.exports = {
       {
         test: /\.js|jsx$/,
         use: 'happypack/loader?id=js',
-        include: /src/,          // 只转化src目录下的js
-        exclude: /node_modules/,  // 排除掉node_modules，优化打包速度
+        include: /src/,
+        exclude: /node_modules/,
       },
       {
         test: /\.scss$/,     // 解析scss
-        use: ExtractTextWebpackPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader', 'postcss-loader', 'sass-loader'
-          ], // 从右向左解析
-        }),
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[hash:base64:6]'
+            }
+          },
+          'postcss-loader',
+          'sass-loader'
+        ],
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/,     // 解析css
-        use: ExtractTextWebpackPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader', 'postcss-loader'
-          ],
-        }),
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[hash:base64:6]'
+            }
+          },
+          'postcss-loader',
+        ],
+        exclude: /node_modules/,
       },
       {
         test: /\.(jpe?g|png|gif)$/,
@@ -108,6 +121,7 @@ module.exports = {
     new ExtractTextWebpackPlugin('css/style.[chunkhash].css'),
     new ExtractTextWebpackPlugin('css/reset.[chunkhash].css'),
     new CleanWebpackPlugin('dist'),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'tags': '0.1.0'
@@ -115,18 +129,16 @@ module.exports = {
       'arg_a': 'foo',
       'arg_b': 'bar',
     }),
-    
+
   ],
   devServer: {
-    port: 3000,             // 端口
-    open: true,             // 自动打开浏览器
-    hot: true,               // 开启热更新
-    overlay: true, // 浏览器页面上显示错误
+    port: 3000,
+    open: true,
+    hot: true,
+    overlay: true,
     historyApiFallback: true,
   },
-  resolve: {
-  
-  },
+  resolve: {},
   //  提取公共代码
   optimization: {
     splitChunks: {
@@ -141,7 +153,7 @@ module.exports = {
         utils: {
           // 抽离自己写的公共代码，utils这个名字可以随意起
           chunks: 'initial',
-          name: 'utils',  //  任意命名
+          name: 'app',  //  任意命名
           minSize: 0,    // 只要超出0字节就生成一个新包
         },
       },

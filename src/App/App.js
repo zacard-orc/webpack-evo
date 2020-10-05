@@ -12,6 +12,12 @@
  */
 
 
-const App = () => <div>Hello Me!</div>
+import React from 'react';
+import css from '../css/App.scss'
 
-export  default App
+const App = () => <div className={css.gm}>
+  <div className={css.title}>Hello World!&nbsp;🙂</div>
+  <div className={css.subTitle}>by Webpack-Evo</div>
+</div>
+
+export default App
