@@ -19,5 +19,14 @@ Babel/core 7.11
 Webpack 4.41
 ```
 
+# Thanks
 
-# thanks
+
+# ChangeLog
+## 0.1.0
+- :pushpin: init support 
+- :bookmark: accelerate pack
+- :bookmark: ccs/scss module
+- :bookmark: some babel features may used in next tags
+- :bookmark: default splitChunks
+- :label: careless webpack dev/prd
