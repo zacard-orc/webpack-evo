@@ -2,11 +2,11 @@
 This is a webpack configuration record how to construct a react project and not use cra.  
 This may help you to inspect details of knowledge
 
-![avatar](./docs/img/tgs010-1.jpg)
+ <img src="./docs/img/tgs010-1.png" alt="title" align=center />
 
 # How to use
 ```bash
-git clone https://github.com/zacard-orc/webpack-evo.git --depth 1 --single-branch --branch master
+git clone --depth 1 --single-branch --branch main https://github.com/zacard-orc/webpack-evo.git 
 yarn
 yarn dev
 yarn build
@@ -19,5 +19,14 @@ Babel/core 7.11
 Webpack 4.41
 ```
 
+# Thanks
 
-# thanks
+
+# ChangeLog/Tags
+## 0.1.0
+- :pushpin: init support 
+- :bookmark: accelerate pack
+- :bookmark: ccs/scss module
+- :bookmark: some babel features may used in next tags
+- :bookmark: default splitChunks
+- :label: careless webpack dev/prd
