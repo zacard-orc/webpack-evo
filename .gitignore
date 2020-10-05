@@ -1,0 +1,7 @@
+# normal
+node_modules/
+.idea/
+logs/
+
+# self-use
+atest/
