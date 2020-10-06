@@ -68,7 +68,8 @@
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.8",
     "yargs-parser": "^10.1.0",
-    "hard-source-webpack-plugin": "^0.13.1"
+    "hard-source-webpack-plugin": "^0.13.1",
+    "copy-webpack-plugin": "^4.0.1"
   },
   "dependencies": {
     "cross-env": "^5.2.0",

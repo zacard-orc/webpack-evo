@@ -1,3 +1,4 @@
+@import "Gm";
 
 .gm {
   width: 100%;
@@ -10,10 +11,25 @@
   color: palevioletred;
   font-size: 5vw;
   font-weight: 400;
+  font-family: Lato-Medium;
 }
 
 .subTitle{
-  font-size: 2vw;
+  font-size: 1.5vw;
   font-weight: 200;
   color: grey;
+}
+
+.imgBar{
+  display: flex;
+  justify-content: center;
+  margin-top: 2vh;
+}
+
+.imgBlock{
+  flex: 0 0 20%;
+}
+
+.imgFix{
+  width: 20%;
 }
