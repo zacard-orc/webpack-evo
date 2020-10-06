@@ -16,6 +16,8 @@
 import React from 'react';
 import css from '../css/App.scss'
 
+import imgPlanet from './planet.png'
+
 import {
   sum
 } from 'utils/math'
@@ -23,6 +25,17 @@ import {
 const App = () => <div className={css.gm}>
   <div className={css.title}>Hello World!&nbsp;🙂</div>
   <div className={css.subTitle}>by Webpack-Evo {sum(Date.now(), 1)}</div>
+  <div className={css.imgBar}>
+    <div className={css.imgBlock}>
+      <img className={css.imgFix} src={imgPlanet}/>
+    </div>
+    <div className={css.imgBlock}>
+      <img className={css.imgFix} src={require('./lion.svg')}/>
+    </div>
+    <div className={css.imgBlock}>
+      <img className={css.imgFix} src={require('./beats.svg')}/>
+    </div>
+  </div>
 </div>
 
 export default App

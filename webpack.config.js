@@ -22,6 +22,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HappyPack = require('happypack');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const happyThreadPool = HappyPack.ThreadPool({
   size: os.cpus().length
@@ -31,8 +32,10 @@ const basePlugin = [
   new HappyPack({
     id: 'js',
     threadPool: happyThreadPool,
-    loaders: [
-      'babel-loader'
+    use: [
+      {
+        loader: 'babel-loader',
+      }
     ],
   }),
   new HtmlWebpackPlugin({
@@ -52,12 +55,18 @@ const basePlugin = [
   }),
 ];
 
-if (pro === 'development') {
+if (!pro) {
   basePlugin.push(new webpack.HotModuleReplacementPlugin())
 }
 
-if (pro === 'production') {
+if (pro) {
   basePlugin.unshift(new CleanWebpackPlugin('dist'))
+  basePlugin.push(new CopyWebpackPlugin([
+    {
+      from: 'public',
+      to: 'public',
+    }
+  ]))
 }
 
 module.exports = {
@@ -68,6 +77,7 @@ module.exports = {
     path: path.resolve('dist'),
     filename: '[name].[hash].js',
     publicPath: pro
+      // ? 'https://x.cdn.com/jsbundle'
       ? './'
       : '/',
   },
@@ -123,8 +133,9 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 8192,    // 小于8k的图片自动转成base64格式，并且不会存在实体图片
-              outputPath: 'images/',   // 图片打包后存放的目录
+              limit: 8192,
+              outputPath: 'assets/',
+              name: 'img/[name].[hash:7].[ext]'
             },
           },
         ],
@@ -135,7 +146,12 @@ module.exports = {
       },
       {
         test: /\.(eot|ttf|woff|svg)$/,  //  打包字体图片和svg图片
-        use: 'file-loader',
+        loader: 'file-loader',
+        options: {
+          limit: 10000,
+          outputPath: 'assets/',
+          name: 'others/[name].[hash:7].[ext]'
+        }
       },
     ],
   },
@@ -150,6 +166,7 @@ module.exports = {
   resolve: {
     alias: {
       utils: path.resolve(__dirname, 'src/utils/'),
+      '@': path.join(__dirname, 'src')
     }
   },
   externals: {

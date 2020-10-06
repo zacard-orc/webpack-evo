@@ -11,3 +11,9 @@
 - :pushpin: normal slimming
 - :bookmark: use dev/prd config
 - :bookmark: use externals for react
+
+## 1.1.0
+- :pushpin: normal slimming
+- :bookmark: use font
+- :bookmark: use img/svg loader
+- :bookmark: copy public to dist
