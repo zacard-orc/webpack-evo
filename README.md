@@ -30,3 +30,7 @@ Webpack 4.41
 - :bookmark: some babel features may used in next tags
 - :bookmark: default splitChunks
 - :label: careless webpack dev/prd
+
+## 1.0.0
+- :bookmark: use dev/prd config
+
