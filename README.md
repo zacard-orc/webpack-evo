@@ -23,16 +23,15 @@ Webpack 4.41
 
 
 # ChangeLog/Tags
-## 0.1.0
+## v0.1.0  [download](https://github.com/zacard-orc/webpack-evo/releases/tag/v0.1.0)
 - :pushpin: init support 
 - :bookmark: accelerate pack
 - :bookmark: ccs/scss module
 - :bookmark: some babel features may used in next tags
 - :bookmark: default splitChunks
 - :label: careless webpack dev/prd
-DownLoad [v0.1.0](https://github.com/zacard-orc/webpack-evo/releases/tag/v0.1.0)
 
-## 1.0.0
+## v1.0.0
 - :pushpin: normal slimming
 - :bookmark: use dev/prd config
 - :bookmark: use externals for react
