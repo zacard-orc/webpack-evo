@@ -22,3 +22,8 @@
 - :pushpin: normal slimming
 - :bookmark: use css file
 - :bookmark: adjust output hash length
+
+## 1.3.0
+- :pushpin: normal slimming
+- :bookmark: add icon static
+- :bookmark: add inner define
