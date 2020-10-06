@@ -41,3 +41,4 @@ Webpack 4.41
 - :pushpin: normal slimming
 - :bookmark: use font
 - :bookmark: use img/svg loader
+- :bookmark: copy public to dist
