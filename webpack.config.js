@@ -17,12 +17,15 @@ const os = require('os');
 const webpack = require('webpack');
 const argv = require('yargs-parser')(process.argv.slice(2));
 const pro = argv.mode === 'production';
+const pkgjson = require('./package.json');
 
+/* plugin lib */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HappyPack = require('happypack');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const happyThreadPool = HappyPack.ThreadPool({
   size: os.cpus().length
@@ -42,14 +45,12 @@ const basePlugin = [
     template: './src/index.html',
     chunks: [
       'vendor', 'index', 'utils'
-    ],  //  引入需要的chunk
+    ],
   }),
   new webpack.DefinePlugin({
     'process.env': {
-      'tags': '0.1.0'
-    },
-    'arg_a': 'foo',
-    'arg_b': 'bar',
+      'ver': JSON.stringify(pkgjson.version)
+    }
   }),
 ];
 
@@ -59,6 +60,7 @@ if (!pro) {
     filename: 'css/style.[chunkhash:7].css',
     disable: false,
   }))
+  basePlugin.push(new HardSourceWebpackPlugin())
 }
 
 if (pro) {

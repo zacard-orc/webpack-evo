@@ -1,6 +1,6 @@
 {
   "name": "webpack-evo",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "the evolution of webpack configurations by step",
   "keywords": [
     "react webpack4 babel threeshaking shimming externals"

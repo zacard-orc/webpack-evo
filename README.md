@@ -2,7 +2,7 @@
 This is a webpack configuration record how to construct a react project and not use cra.  
 This may help you to inspect details of knowledge
 
- <img src="./docs/img/tags120-1.png" alt="title" align=center />
+ <img src="./docs/img/tags130-1.png" alt="title" align=center />
 
 # How to use
 ```bash
@@ -48,3 +48,9 @@ Webpack 4.41
 - :pushpin: normal slimming
 - :bookmark: use css file
 - :bookmark: adjust output hash length
+
+
+## v1.3.0 [⬇️](https://github.com/zacard-orc/webpack-evo/releases/tag/v1.3.0)
+- :pushpin: normal slimming
+- :bookmark: add icon static
+- :bookmark: add inner define

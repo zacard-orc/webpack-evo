@@ -22,9 +22,11 @@ import {
   sum
 } from 'utils/math'
 
+
 const App = () => <div className={css.gm}>
   <div className={css.title}>Hello World!&nbsp;🙂</div>
-  <div className={css.subTitle}>by Webpack-Evo {sum(Date.now(), 1)}</div>
+  {/* eslint-disable-next-line no-undef */}
+  <div className={css.subTitle}>by Webpack-Evo {sum(Date.now(), 1)} / {process.env.ver}</div>
   <div className={css.imgBar}>
     <div className={css.imgBlock}>
       <img className={css.imgFix} src={imgPlanet}/>
