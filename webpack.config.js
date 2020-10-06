@@ -44,8 +44,6 @@ const basePlugin = [
       'vendor', 'index', 'utils'
     ],  //  引入需要的chunk
   }),
-  new ExtractTextWebpackPlugin('css/style.[chunkhash].css'),
-  new ExtractTextWebpackPlugin('css/reset.[chunkhash].css'),
   new webpack.DefinePlugin({
     'process.env': {
       'tags': '0.1.0'
@@ -57,10 +55,17 @@ const basePlugin = [
 
 if (!pro) {
   basePlugin.push(new webpack.HotModuleReplacementPlugin())
+  basePlugin.push(new ExtractTextWebpackPlugin({
+    filename: 'css/style.[chunkhash:7].css',
+    disable: false,
+  }))
 }
 
 if (pro) {
   basePlugin.unshift(new CleanWebpackPlugin('dist'))
+  basePlugin.push(new ExtractTextWebpackPlugin({
+    filename: 'assets/css/style.[chunkhash:7].css',
+  }))
   basePlugin.push(new CopyWebpackPlugin([
     {
       from: 'public',
@@ -75,7 +80,7 @@ module.exports = {
   },
   output: {
     path: path.resolve('dist'),
-    filename: '[name].[hash].js',
+    filename: '[name].[hash:7].js',
     publicPath: pro
       // ? 'https://x.cdn.com/jsbundle'
       ? './'
@@ -98,18 +103,20 @@ module.exports = {
       },
       {
         test: /\.scss$/,     // 解析scss
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[hash:base64:6]'
-            }
-          },
-          'postcss-loader',
-          'sass-loader'
-        ],
+        use: ExtractTextWebpackPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                localIdentName: '[hash:base64:6]'
+              }
+            },
+            'postcss-loader',
+            'sass-loader'
+          ],
+          fallback: 'style-loader',
+        }),
         exclude: /node_modules/,
       },
       {
