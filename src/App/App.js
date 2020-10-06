@@ -12,6 +12,7 @@
  */
 
 
+// import React from 'react';
 import React from 'react';
 import css from '../css/App.scss'
 
@@ -21,7 +22,7 @@ import {
 
 const App = () => <div className={css.gm}>
   <div className={css.title}>Hello World!&nbsp;🙂</div>
-  <div className={css.subTitle}>by Webpack-Evo {sum(0, 1)}</div>
+  <div className={css.subTitle}>by Webpack-Evo {sum(Date.now(), 1)}</div>
 </div>
 
 export default App

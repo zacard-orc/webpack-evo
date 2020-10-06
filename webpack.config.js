@@ -43,7 +43,6 @@ const basePlugin = [
   }),
   new ExtractTextWebpackPlugin('css/style.[chunkhash].css'),
   new ExtractTextWebpackPlugin('css/reset.[chunkhash].css'),
-
   new webpack.DefinePlugin({
     'process.env': {
       'tags': '0.1.0'
@@ -53,11 +52,11 @@ const basePlugin = [
   }),
 ];
 
-if(pro === 'development'){
+if (pro === 'development') {
   basePlugin.push(new webpack.HotModuleReplacementPlugin())
 }
 
-if(pro === 'production'){
+if (pro === 'production') {
   basePlugin.unshift(new CleanWebpackPlugin('dist'))
 }
 
@@ -68,7 +67,9 @@ module.exports = {
   output: {
     path: path.resolve('dist'),
     filename: '[name].[hash].js',
-    publicPath: '/',
+    publicPath: pro
+      ? './'
+      : '/',
   },
   module: {
     rules: [
@@ -150,6 +151,10 @@ module.exports = {
     alias: {
       utils: path.resolve(__dirname, 'src/utils/'),
     }
+  },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM'
   },
   //  提取公共代码
   optimization: {
