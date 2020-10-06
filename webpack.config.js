@@ -27,6 +27,39 @@ const happyThreadPool = HappyPack.ThreadPool({
   size: os.cpus().length
 });
 
+const basePlugin = [
+  new HappyPack({
+    id: 'js',
+    threadPool: happyThreadPool,
+    loaders: [
+      'babel-loader'
+    ],
+  }),
+  new HtmlWebpackPlugin({
+    template: './src/index.html',
+    chunks: [
+      'vendor', 'index', 'utils'
+    ],  //  引入需要的chunk
+  }),
+  new ExtractTextWebpackPlugin('css/style.[chunkhash].css'),
+  new ExtractTextWebpackPlugin('css/reset.[chunkhash].css'),
+  new webpack.DefinePlugin({
+    'process.env': {
+      'tags': '0.1.0'
+    },
+    'arg_a': 'foo',
+    'arg_b': 'bar',
+  }),
+];
+
+if (pro === 'development') {
+  basePlugin.push(new webpack.HotModuleReplacementPlugin())
+}
+
+if (pro === 'production') {
+  basePlugin.unshift(new CleanWebpackPlugin('dist'))
+}
+
 module.exports = {
   entry: {
     index: './src/index.js',
@@ -34,7 +67,9 @@ module.exports = {
   output: {
     path: path.resolve('dist'),
     filename: '[name].[hash].js',
-    publicPath: '/',
+    publicPath: pro
+      ? './'
+      : '/',
   },
   module: {
     rules: [
@@ -104,33 +139,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HappyPack({
-      id: 'js',
-      threadPool: happyThreadPool,
-      loaders: [
-        'babel-loader'
-      ],
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      chunks: [
-        'vendor', 'index', 'utils'
-      ],  //  引入需要的chunk
-    }),
-    new ExtractTextWebpackPlugin('css/style.[chunkhash].css'),
-    new ExtractTextWebpackPlugin('css/reset.[chunkhash].css'),
-    new CleanWebpackPlugin('dist'),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'tags': '0.1.0'
-      },
-      'arg_a': 'foo',
-      'arg_b': 'bar',
-    }),
-
-  ],
+  plugins: basePlugin,
   devServer: {
     port: 3000,
     open: true,
@@ -138,7 +147,15 @@ module.exports = {
     overlay: true,
     historyApiFallback: true,
   },
-  resolve: {},
+  resolve: {
+    alias: {
+      utils: path.resolve(__dirname, 'src/utils/'),
+    }
+  },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM'
+  },
   //  提取公共代码
   optimization: {
     splitChunks: {
@@ -159,5 +176,7 @@ module.exports = {
       },
     },
   },
-  devtool: 'inline-source-map',
+  devtool: pro
+    ? ''
+    : 'inline-source-map',
 };

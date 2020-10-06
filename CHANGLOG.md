@@ -5,3 +5,9 @@
 - :bookmark: some babel features may used in next tags
 - :bookmark: default splitChunks
 - :label: careless webpack dev/prd
+
+
+## 1.0.0
+- :pushpin: normal slimming
+- :bookmark: use dev/prd config
+- :bookmark: use externals for react

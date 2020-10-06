@@ -30,3 +30,11 @@ Webpack 4.41
 - :bookmark: some babel features may used in next tags
 - :bookmark: default splitChunks
 - :label: careless webpack dev/prd
+</br>
+DownLoad [v0.1.0](https://github.com/zacard-orc/webpack-evo/releases/tag/v0.1.0)
+
+## 1.0.0
+- :pushpin: normal slimming
+- :bookmark: use dev/prd config
+- :bookmark: use externals for react
+
