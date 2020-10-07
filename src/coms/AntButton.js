@@ -13,13 +13,20 @@
 
 import React from 'react';
 
-import 'AntButton.scss'
-
 import {
   Button
 } from 'antd';
 
-const AntButton = () => <Button/>
+const AntButton = () =>  {
+  return (
+    <div>
+      <h4>Ant Design</h4>
+      <p>
+        <Button type="primary">Button</Button>
+      </p>
+    </div>
+  )
+}
 
 export {
   AntButton

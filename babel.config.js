@@ -11,6 +11,13 @@ module.exports = {
       }
     ],
     [
+      'import',
+      {
+        'libraryName': 'antd',
+        'libraryDirectory': 'es',
+      }
+    ],
+    [
       '@babel/plugin-proposal-optional-chaining'
     ],
     [

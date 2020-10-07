@@ -21,9 +21,9 @@ import {
   sum
 } from 'utils/math'
 
-// import {
-//   AntButton
-// } from '@/coms/AntButton'
+import {
+  AntButton
+} from '@/coms/AntButton'
 
 const App = () => <div className={css.gm}>
   <div className={css.title}>Hello World!&nbsp;🙂</div>
@@ -42,8 +42,7 @@ const App = () => <div className={css.gm}>
   </div>
   <div className={css.demoBar}>
     <div className={css.demoBlock}>
-      Ant Design
-      {/*<AntButton/>*/}
+      <AntButton/>
     </div>
   </div>
 </div>
