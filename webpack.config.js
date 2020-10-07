@@ -140,7 +140,6 @@ module.exports = {
           },
           'postcss-loader',
         ],
-        exclude: /node_modules/,
       },
       {
         test: /\.(jpe?g|png|gif)$/,

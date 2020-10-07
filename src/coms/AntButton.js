@@ -16,18 +16,27 @@ import React from 'react';
 
 
 import {
-  Button
+  Alert,
+  Button,
+  DatePicker,
 } from 'antd';
 
-
-import '@/css/antd.min.css'
-
 const AntButton = () =>  {
+  function onChange(date, dateString) {
+    console.log(date, dateString);
+  }
+
   return (
     <div>
       <h4>Ant Design</h4>
       <p>
         <Button type="primary">Button</Button>
+      </p>
+      <p>
+        <DatePicker onChange={onChange} />
+      </p>
+      <p>
+        <Alert message="Warning Text" type="warning" />
       </p>
     </div>
   )

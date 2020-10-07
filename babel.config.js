@@ -14,7 +14,8 @@ module.exports = {
       'import',
       {
         'libraryName': 'antd',
-        'libraryDirectory': 'es'
+        'libraryDirectory': 'es',
+        'style': 'css ',
       }
     ],
     [
