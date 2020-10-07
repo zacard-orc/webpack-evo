@@ -13,11 +13,14 @@
 
 import React from 'react';
 
+
+
 import {
   Button
 } from 'antd';
 
 
+import '@/css/antd.min.css'
 
 const AntButton = () =>  {
   return (
