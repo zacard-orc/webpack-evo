@@ -11,6 +11,14 @@ module.exports = {
       }
     ],
     [
+      'import',
+      {
+        'libraryName': 'antd',
+        'libraryDirectory': 'es',
+        'style': 'css ',
+      }
+    ],
+    [
       '@babel/plugin-proposal-optional-chaining'
     ],
     [
@@ -21,5 +29,14 @@ module.exports = {
     [
       '@babel/plugin-proposal-nullish-coalescing-operator'
     ],
+    [
+      '@babel/plugin-transform-runtime', {
+        'absoluteRuntime': false,
+        'corejs': false,
+        'helpers': true,
+        'regenerator': true,
+        'useESModules': false
+      }
+    ]
   ]
 };

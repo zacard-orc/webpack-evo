@@ -33,3 +33,17 @@
 .imgFix{
   width: 20%;
 }
+
+.demoBar{
+  display: flex;
+  justify-content: center;
+  margin-top: 2vh;
+}
+
+.demoBlock{
+  flex: 0 0 20%;
+  height: 300px;
+  border: 1px solid gainsboro;
+  padding: 0.3vw;
+  box-sizing: border-box;
+}

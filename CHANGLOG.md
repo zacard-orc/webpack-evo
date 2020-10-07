@@ -27,3 +27,9 @@
 - :pushpin: normal slimming
 - :bookmark: add icon static
 - :bookmark: add inner define
+
+## 1.4.0
+- :pushpin: use antDesign
+- :bookmark: add ant design
+- :bookmark: html link ant css
+

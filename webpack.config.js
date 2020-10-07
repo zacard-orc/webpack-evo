@@ -41,6 +41,10 @@ const basePlugin = [
       }
     ],
   }),
+  new ExtractTextWebpackPlugin({
+    filename: 'css/style.[chunkhash:7].css',
+    disable: !pro,
+  }),
   new HtmlWebpackPlugin({
     template: './src/index.html',
     chunks: [
@@ -56,18 +60,11 @@ const basePlugin = [
 
 if (!pro) {
   basePlugin.push(new webpack.HotModuleReplacementPlugin())
-  basePlugin.push(new ExtractTextWebpackPlugin({
-    filename: 'css/style.[chunkhash:7].css',
-    disable: false,
-  }))
   basePlugin.push(new HardSourceWebpackPlugin())
 }
 
 if (pro) {
   basePlugin.unshift(new CleanWebpackPlugin('dist'))
-  basePlugin.push(new ExtractTextWebpackPlugin({
-    filename: 'assets/css/style.[chunkhash:7].css',
-  }))
   basePlugin.push(new CopyWebpackPlugin([
     {
       from: 'public',
@@ -104,6 +101,15 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.less$/,     // 解析less
+        use: ExtractTextWebpackPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader', 'postcss-loader', 'less-loader'
+          ],
+        }),
+      },
+      {
         test: /\.scss$/,     // 解析scss
         use: ExtractTextWebpackPlugin.extract({
           use: [
@@ -134,7 +140,6 @@ module.exports = {
           },
           'postcss-loader',
         ],
-        exclude: /node_modules/,
       },
       {
         test: /\.(jpe?g|png|gif)$/,
