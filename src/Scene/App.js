@@ -12,16 +12,18 @@
  */
 
 
-// import React from 'react';
 import React from 'react';
-import css from '../css/App.scss'
 
+import css from '../css/App.scss'
 import imgPlanet from './planet.png'
 
 import {
   sum
 } from 'utils/math'
 
+// import {
+//   AntButton
+// } from '@/coms/AntButton'
 
 const App = () => <div className={css.gm}>
   <div className={css.title}>Hello World!&nbsp;🙂</div>
@@ -36,6 +38,12 @@ const App = () => <div className={css.gm}>
     </div>
     <div className={css.imgBlock}>
       <img className={css.imgFix} src={require('./beats.svg')}/>
+    </div>
+  </div>
+  <div className={css.demoBar}>
+    <div className={css.demoBlock}>
+      Ant Design
+      {/*<AntButton/>*/}
     </div>
   </div>
 </div>

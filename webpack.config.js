@@ -41,6 +41,10 @@ const basePlugin = [
       }
     ],
   }),
+  new ExtractTextWebpackPlugin({
+    filename: 'css/style.[chunkhash:7].css',
+    disable: !pro,
+  }),
   new HtmlWebpackPlugin({
     template: './src/index.html',
     chunks: [
@@ -56,18 +60,11 @@ const basePlugin = [
 
 if (!pro) {
   basePlugin.push(new webpack.HotModuleReplacementPlugin())
-  basePlugin.push(new ExtractTextWebpackPlugin({
-    filename: 'css/style.[chunkhash:7].css',
-    disable: false,
-  }))
   basePlugin.push(new HardSourceWebpackPlugin())
 }
 
 if (pro) {
   basePlugin.unshift(new CleanWebpackPlugin('dist'))
-  basePlugin.push(new ExtractTextWebpackPlugin({
-    filename: 'assets/css/style.[chunkhash:7].css',
-  }))
   basePlugin.push(new CopyWebpackPlugin([
     {
       from: 'public',
