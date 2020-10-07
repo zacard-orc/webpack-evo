@@ -101,6 +101,15 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.less$/,     // 解析less
+        use: ExtractTextWebpackPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader', 'postcss-loader', 'less-loader'
+          ],
+        }),
+      },
+      {
         test: /\.scss$/,     // 解析scss
         use: ExtractTextWebpackPlugin.extract({
           use: [
