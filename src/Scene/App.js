@@ -25,6 +25,8 @@ import {
   AntButton
 } from '@/coms/AntButton'
 
+console.log('define ', JSON.stringify(process.env))
+
 const App = () => <div className={css.gm}>
   <div className={css.title}>Hello World!&nbsp;🙂</div>
   {/* eslint-disable-next-line no-undef */}

@@ -29,15 +29,21 @@ const AntButton = () =>  {
   return (
     <div>
       <h4>Ant Design</h4>
-      <p>
-        <Button type="primary">Button</Button>
-      </p>
-      <p>
-        <DatePicker onChange={onChange} />
-      </p>
-      <p>
-        <Alert message="Warning Text" type="warning" />
-      </p>
+      <div style={{
+        marginTop: '1vh'
+      }}
+      ><Button type="primary">Button</Button>
+      </div>
+      <div style={{
+        marginTop: '1vh'
+      }}
+      ><DatePicker onChange={onChange} />
+      </div>
+      <div style={{
+        marginTop: '1vh'
+      }}
+      ><Alert message="Warning Text" type="warning" />
+      </div>
     </div>
   )
 }
